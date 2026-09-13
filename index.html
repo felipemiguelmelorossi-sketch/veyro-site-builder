@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Veyro — Crie seu site</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #0b0b0f;
+      color: white;
+      min-height: 100vh;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 8%;
+      border-bottom: 1px solid #222;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: #aaa;
+      text-decoration: none;
+      margin-left: 25px;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 120px 20px;
+    }
+
+    .hero h1 {
+      font-size: 60px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: #7c5cff;
+    }
+
+    .hero p {
+      color: #aaa;
+      font-size: 20px;
+      max-width: 650px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 35px;
+      padding: 16px 30px;
+      background: #7c5cff;
+      color: white;
+      text-decoration: none;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    .features {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 30px 8% 100px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background: #15151c;
+      border: 1px solid #252530;
+      border-radius: 15px;
+      padding: 30px;
+      width: 280px;
+    }
+
+    .card h2 {
+      margin-bottom: 12px;
+    }
+
+    .card p {
+      color: #999;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">VEYRO</div>
+
+    <nav>
+      <a href="#">Início</a>
+      <a href="#">Recursos</a>
+      <a href="#">Preços</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Crie seu <span>site</span>.</h1>
+
+    <p>
+      Uma nova maneira de transformar suas ideias em sites
+      modernos, rápidos e personalizados.
+    </p>
+
+    <a href="#" class="button">Começar agora</a>
+  </section>
+
+  <section class="features">
+
+    <div class="card">
+      <h2>🎨 Personalize</h2>
+      <p>
+        Escolha cores, textos e estilos para deixar seu site
+        com a sua identidade.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>⚡ Rápido</h2>
+      <p>
+        Crie sua página sem precisar começar tudo do zero.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>🚀 Publique</h2>
+      <p>
+        Transforme sua ideia em um site que qualquer pessoa
+        poderá acessar.
+      </p>
+    </div>
+
+  </section>
+
+</body>
+</html>
