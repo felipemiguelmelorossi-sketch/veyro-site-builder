@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Veyro — Planos</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top, #18213d 0%, #090d18 45%, #05070d 100%);
+      color: white;
+      padding: 40px 20px 70px;
+    }
+
+    .top {
+      max-width: 1100px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .logo {
+      font-size: 34px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      margin-bottom: 35px;
+    }
+
+    .logo span {
+      color: #6d5dfc;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 15px;
+      border-radius: 30px;
+      background: rgba(109, 93, 252, 0.13);
+      border: 1px solid rgba(109, 93, 252, 0.35);
+      color: #a99fff;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 14px;
+    }
+
+    .subtitle {
+      color: #9ca3b5;
+      font-size: 17px;
+      max-width: 650px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    .plans {
+      max-width: 1100px;
+      margin: 55px auto 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .plan {
+      position: relative;
+      background: rgba(16, 21, 37, 0.9);
+      border: 1px solid #252c40;
+      border-radius: 22px;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      transition: 0.25s;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    }
+
+    .plan:hover {
+      transform: translateY(-7px);
+      border-color: #454e6d;
+    }
+
+    .plan.popular {
+      border: 1px solid #6d5dfc;
+      box-shadow: 0 0 35px rgba(109, 93, 252, 0.18);
+      transform: scale(1.025);
+    }
+
+    .popular-label {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #6d5dfc;
+      padding: 7px 17px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .plan-name {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .plan-description {
+      color: #8f98ad;
+      min-height: 48px;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .price {
+      margin: 25px 0 8px;
+      font-size: 40px;
+      font-weight: 900;
+    }
+
+    .price small {
+      font-size: 14px;
+      color: #8992a6;
+      font-weight: normal;
+    }
+
+    .line {
+      height: 1px;
+      background: #252c40;
+      margin: 22px 0;
+    }
+
+    .features {
+      list-style: none;
+      margin-bottom: 30px;
+      flex: 1;
+    }
+
+    .features li {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+      color: #d8dce7;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .check {
+      color: #6d5dfc;
+      font-weight: bold;
+      font-size: 17px;
+    }
+
+    .button {
+      width: 100%;
+      border: none;
+      padding: 15px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 800;
+      cursor: pointer;
+      background: #252c40;
+      color: white;
+      transition: 0.2s;
+    }
+
+    .button:hover {
+      background: #343c55;
+    }
+
+    .button.primary {
+      background: #6d5dfc;
+    }
+
+    .button.primary:hover {
+      background: #7b6cff;
+    }
+
+    .button.deluxe {
+      background: linear-gradient(135deg, #6d5dfc, #8d5cff);
+    }
+
+    .button.deluxe:hover {
+      filter: brightness(1.1);
+    }
+
+    .bottom {
+      text-align: center;
+      margin-top: 45px;
+      color: #737c91;
+      font-size: 13px;
+    }
+
+    @media (max-width: 850px) {
+      .plans {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+      }
+
+      .plan.popular {
+        transform: none;
+      }
+
+      h1 {
+        font-size: 38px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      body {
+        padding: 25px 15px 50px;
+      }
+
+      h1 {
+        font-size: 32px;
+      }
+
+      .subtitle {
+        font-size: 15px;
+      }
+
+      .plan {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="top">
+
+    <div class="logo">
+      VEY<span>RO</span>
+    </div>
+
+    <div class="badge">
+      PLANOS VEYRO
+    </div>
+
+    <h1>Escolha seu plano</h1>
+
+    <p class="subtitle">
+      Crie seu próprio streaming com ferramentas profissionais,
+      personalização e recursos feitos para levar sua plataforma ao próximo nível.
+    </p>
+
+  </div>
+
+
+  <section class="plans">
+
+    <!-- BASIC -->
+    <div class="plan">
+
+      <div class="plan-name">
+        Basic
+      </div>
+
+      <div class="plan-description">
+        Para quem está começando seu próprio streaming.
+      </div>
+
+      <div class="price">
+        R$ 29,99 <small>/mês</small>
+      </div>
+
+      <div class="line"></div>
+
+      <ul class="features">
+
+        <li>
+          <span class="check">✓</span>
+          1 streaming
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          Subdomínio Veyro
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          Personalização básica
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          Catálogo de conteúdos
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          Página responsiva
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          Pesquisa de conteúdos
+        </li>
+
+      </ul>
+
+      <button class="button" onclick="assinar('Basic')">
+        Assinar agora
+      </button>
+
+    </div>
+
+
+    <!-- PREMIUM -->
+    <div class="plan popular">
+
+      <div class="popular-label">
+        MAIS POPULAR
+      </div>
+
+      <div class="plan-name">
+        Premium
+      </div>
+
+      <div class="plan-description">
+        Para criadores que querem uma plataforma mais profissional.
+      </div>
+
+      <div class="price">
+        R$ 90,00 <small>/mês</small>
+      </div>
+
+      <div class="line"></div>
+
+      <ul class="features">
+
+        <li>
+          <span class="check">✓</span>
+          Até 5 streamings
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          Subdomínio Veyro
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          Personalização avançada
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          Logo e identidade visual
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          Categorias personalizadas
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          Estatísticas do streaming
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          Mais espaço para conteúdos
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          Suporte prioritário
+        </li>
+
+      </ul>
+
+      <button class="button primary" onclick="assinar('Premium')">
+        Assinar agora
+      </button>
+
+    </div>
+
+
+    <!-- DELUXE -->
+    <div class="plan">
+
+      <div class="plan-name">
+        Deluxe
+      </div>
+
+      <div class="plan-description">
+        O plano completo para quem quer aproveitar o máximo do Veyro.
+      </div>
+
+      <div class="price">
+        R$ 100,00 <small>/mês</small>
+      </div>
+
+      <div class="line"></div>
+
+      <ul class="features">
+
+        <li>
+          <span class="check">✓</span>
+          Streamings ilimitados
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          Personalização completa
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          Domínio personalizado
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          Logo e identidade visual
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          Estatísticas avançadas
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          Mais armazenamento
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          Editor completo
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          Suporte prioritário
+        </li>
+
+        <li>
+          <span class="check">✓</span>
+          Recursos exclusivos
+        </li>
+
+      </ul>
+
+      <button class="button deluxe" onclick="assinar('Deluxe')">
+        Assinar agora
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <div class="bottom">
+    © 2026 Veyro. Todos os direitos reservados.
+  </div>
+
+
+  <script>
+
+    function assinar(plano) {
+
+      alert(
+        "Você escolheu o plano " +
+        plano +
+        ".\n\nO checkout do Stripe será conectado aqui."
+      );
+
+    }
+
+  </script>
+
+</body>
+</html>
