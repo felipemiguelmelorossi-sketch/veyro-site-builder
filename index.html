@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Veyro — Crie seu streaming</title>
+  <title>Veyro — Dashboard</title>
 
   <style>
     * {
@@ -15,408 +15,432 @@
       font-family: Arial, sans-serif;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
     body {
       background: #08080c;
       color: white;
       min-height: 100vh;
     }
 
-    /* HEADER */
+    button,
+    input {
+      font-family: inherit;
+    }
 
-    header {
-      height: 72px;
-      padding: 0 7%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid #202028;
-      background: rgba(8, 8, 12, 0.95);
-      position: sticky;
+    /* SIDEBAR */
+
+    .sidebar {
+      position: fixed;
+      left: 0;
       top: 0;
-      z-index: 100;
-      backdrop-filter: blur(12px);
+      width: 240px;
+      height: 100vh;
+      background: #101017;
+      border-right: 1px solid #25252f;
+      padding: 25px 15px;
     }
 
     .logo {
       font-size: 25px;
       font-weight: 800;
       letter-spacing: 2px;
+      padding: 0 15px;
+      margin-bottom: 45px;
     }
 
     .logo span {
       color: #7c5cff;
     }
 
-    nav {
-      display: flex;
-      gap: 28px;
+    .menu-title {
+      color: #666672;
+      font-size: 11px;
+      text-transform: uppercase;
+      margin: 20px 15px 10px;
+      letter-spacing: 1px;
     }
 
-    nav a {
+    .menu-item {
+      display: block;
+      width: 100%;
+      padding: 13px 15px;
+      border-radius: 9px;
       color: #9999a5;
       text-decoration: none;
+      margin-bottom: 5px;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      text-align: left;
       font-size: 14px;
-      transition: 0.2s;
     }
 
-    nav a:hover {
+    .menu-item:hover,
+    .menu-item.active {
+      background: #1b1827;
       color: white;
     }
 
-    /* HERO */
+    /* MAIN */
 
-    .hero {
-      min-height: 650px;
+    .main {
+      margin-left: 240px;
+      min-height: 100vh;
+    }
+
+    .topbar {
+      height: 75px;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #202029;
+      background: #0b0b10;
+    }
+
+    .topbar h1 {
+      font-size: 20px;
+    }
+
+    .profile {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #7c5cff;
       display: flex;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      padding: 80px 20px;
-      background:
-        radial-gradient(
-          circle at center,
-          rgba(124, 92, 255, 0.18),
-          transparent 50%
-        );
-    }
-
-    .hero-content {
-      max-width: 850px;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 8px 15px;
-      border: 1px solid #31275c;
-      background: #151122;
-      border-radius: 30px;
-      color: #a895ff;
-      font-size: 13px;
-      margin-bottom: 25px;
-    }
-
-    .hero h1 {
-      font-size: clamp(45px, 7vw, 82px);
-      line-height: 1;
-      margin-bottom: 25px;
-    }
-
-    .hero h1 span {
-      color: #7c5cff;
-    }
-
-    .hero p {
-      max-width: 650px;
-      margin: auto;
-      color: #9d9da8;
-      font-size: 19px;
-      line-height: 1.6;
-    }
-
-    .primary-button {
-      display: inline-block;
-      margin-top: 35px;
-      padding: 17px 30px;
-      border: 0;
-      border-radius: 10px;
-      background: #7c5cff;
-      color: white;
-      text-decoration: none;
       font-weight: bold;
-      cursor: pointer;
-      transition: 0.2s;
     }
 
-    .primary-button:hover {
-      transform: translateY(-2px);
-      opacity: 0.9;
+    .content {
+      padding: 40px;
+      max-width: 1400px;
     }
 
-    /* FEATURES */
+    /* WELCOME */
 
-    .features {
-      padding: 80px 7%;
-      background: #0d0d13;
+    .welcome {
+      margin-bottom: 35px;
     }
 
-    .section-title {
-      text-align: center;
-      margin-bottom: 45px;
+    .welcome h2 {
+      font-size: 32px;
+      margin-bottom: 8px;
     }
 
-    .section-title h2 {
-      font-size: 38px;
-      margin-bottom: 12px;
+    .welcome p {
+      color: #858591;
     }
 
-    .section-title p {
-      color: #888894;
-    }
+    /* STATS */
 
-    .feature-grid {
+    .stats {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 18px;
-      max-width: 1150px;
-      margin: auto;
+      margin-bottom: 40px;
     }
 
-    .feature {
-      background: #14141c;
-      border: 1px solid #252530;
-      border-radius: 15px;
-      padding: 28px;
-      transition: 0.2s;
+    .stat {
+      background: #12121a;
+      border: 1px solid #262630;
+      border-radius: 14px;
+      padding: 25px;
     }
 
-    .feature:hover {
-      transform: translateY(-4px);
-      border-color: #7c5cff;
-    }
-
-    .feature-icon {
-      font-size: 30px;
-      margin-bottom: 18px;
-    }
-
-    .feature h3 {
-      margin-bottom: 10px;
-    }
-
-    .feature p {
-      color: #8d8d99;
-      line-height: 1.5;
-      font-size: 14px;
-    }
-
-    /* BUILDER */
-
-    .builder {
-      padding: 100px 20px;
-      background: #09090d;
-    }
-
-    .builder-container {
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .builder-header {
-      text-align: center;
-      margin-bottom: 45px;
-    }
-
-    .builder-header h2 {
-      font-size: 42px;
+    .stat-title {
+      color: #888894;
+      font-size: 13px;
       margin-bottom: 12px;
     }
 
-    .builder-header p {
-      color: #888894;
+    .stat-value {
+      font-size: 28px;
+      font-weight: bold;
     }
 
-    .builder-panel {
+    .stat-change {
+      margin-top: 8px;
+      color: #7c5cff;
+      font-size: 12px;
+    }
+
+    /* PROJECTS */
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .section-header h2 {
+      font-size: 22px;
+    }
+
+    .create-button {
+      padding: 12px 18px;
+      border: 0;
+      border-radius: 9px;
+      background: #7c5cff;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .create-button:hover {
+      opacity: 0.9;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .project {
+      background: #12121a;
+      border: 1px solid #262630;
+      border-radius: 15px;
+      overflow: hidden;
+    }
+
+    .project-banner {
+      height: 145px;
+      background:
+        linear-gradient(
+          135deg,
+          #7c5cff,
+          #171321
+        );
+      display: flex;
+      align-items: center;
+      padding: 25px;
+    }
+
+    .project-banner h3 {
+      font-size: 24px;
+    }
+
+    .project-body {
+      padding: 20px;
+    }
+
+    .project-body p {
+      color: #858591;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .project-url {
+      color: #7c5cff;
+      font-size: 13px;
+      margin-bottom: 20px;
+      word-break: break-all;
+    }
+
+    .project-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .action-button {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #30303b;
+      background: #191921;
+      color: white;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .action-button:hover {
+      border-color: #7c5cff;
+    }
+
+    /* CREATE PANEL */
+
+    .create-panel {
+      display: none;
+      margin-top: 35px;
       background: #12121a;
       border: 1px solid #292933;
-      border-radius: 18px;
-      padding: 35px;
+      border-radius: 16px;
+      padding: 30px;
+    }
+
+    .create-panel h2 {
+      margin-bottom: 8px;
+    }
+
+    .create-panel > p {
+      color: #858591;
+      margin-bottom: 30px;
     }
 
     .form-group {
-      margin-bottom: 25px;
+      margin-bottom: 22px;
     }
 
     .form-group label {
       display: block;
-      margin-bottom: 9px;
-      font-weight: bold;
+      margin-bottom: 8px;
       font-size: 14px;
+      font-weight: bold;
     }
 
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
+    .form-group input {
       width: 100%;
-      padding: 15px;
+      padding: 14px;
       background: #0b0b10;
       border: 1px solid #30303b;
-      border-radius: 9px;
+      border-radius: 8px;
       color: white;
       outline: none;
-      font-size: 15px;
     }
 
-    .form-group textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
+    .form-group input:focus {
       border-color: #7c5cff;
     }
 
-    .colors {
+    .domain-box {
       display: flex;
-      gap: 15px;
-    }
-
-    .colors input {
-      height: 55px;
-      padding: 5px;
-      cursor: pointer;
-    }
-
-    .generate-button {
-      width: 100%;
-      padding: 17px;
-      border: 0;
-      border-radius: 10px;
-      background: #7c5cff;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-
-    .generate-button:hover {
-      opacity: 0.9;
-    }
-
-    /* PREVIEW */
-
-    #preview {
-      display: none;
-      margin-top: 40px;
-    }
-
-    .preview-title {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .preview-window {
-      overflow: hidden;
+      align-items: center;
+      background: #0b0b10;
       border: 1px solid #30303b;
-      border-radius: 15px;
-      background: #09090d;
-    }
-
-    .preview-header {
-      height: 65px;
-      padding: 0 25px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: #111119;
-    }
-
-    .preview-logo {
-      font-size: 21px;
-      font-weight: bold;
-    }
-
-    .preview-menu {
-      color: #888894;
-      font-size: 13px;
-    }
-
-    .preview-hero {
-      min-height: 260px;
-      padding: 45px 30px;
-      display: flex;
-      align-items: center;
-      background:
-        linear-gradient(
-          90deg,
-          rgba(0,0,0,0.9),
-          rgba(0,0,0,0.2)
-        );
-    }
-
-    .preview-hero h3 {
-      font-size: 35px;
-      margin-bottom: 10px;
-    }
-
-    .preview-hero p {
-      color: #aaa;
-      max-width: 450px;
-      line-height: 1.5;
-    }
-
-    .preview-content {
-      padding: 30px;
-    }
-
-    .preview-content h3 {
-      margin-bottom: 20px;
-    }
-
-    .movie-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
-
-    .movie {
-      height: 150px;
       border-radius: 8px;
-      background: #191923;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #666674;
+      overflow: hidden;
+    }
+
+    .domain-box input {
+      border: none;
+      border-radius: 0;
+      flex: 1;
+    }
+
+    .domain-suffix {
+      padding: 0 15px;
+      color: #777783;
+      white-space: nowrap;
+    }
+
+    .domain-preview {
+      margin-top: 10px;
+      padding: 13px;
+      border-radius: 8px;
+      background: #17151f;
+      color: #aaa;
       font-size: 13px;
     }
 
-    /* FOOTER */
+    .domain-preview strong {
+      color: #7c5cff;
+    }
 
-    footer {
+    .panel-buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 25px;
+    }
+
+    .save-button {
+      padding: 13px 22px;
+      background: #7c5cff;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .cancel-button {
+      padding: 13px 22px;
+      background: #1a1a22;
+      border: 1px solid #30303b;
+      border-radius: 8px;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* EMPTY */
+
+    .empty {
+      display: none;
       text-align: center;
-      padding: 40px 20px;
-      color: #666673;
-      border-top: 1px solid #202028;
-      font-size: 13px;
+      padding: 60px 20px;
+      border: 1px dashed #30303b;
+      border-radius: 15px;
+      color: #777783;
     }
 
     /* RESPONSIVE */
 
-    @media (max-width: 900px) {
-      .feature-grid {
+    @media (max-width: 1000px) {
+      .stats {
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .movie-grid {
+      .projects {
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
-    @media (max-width: 600px) {
-      header {
-        padding: 0 20px;
+    @media (max-width: 700px) {
+      .sidebar {
+        width: 70px;
+        padding: 20px 8px;
       }
 
-      nav {
+      .logo {
+        font-size: 0;
+        text-align: center;
+        padding: 0;
+      }
+
+      .logo::after {
+        content: "V";
+        font-size: 25px;
+        color: #7c5cff;
+      }
+
+      .menu-title,
+      .menu-item span {
         display: none;
       }
 
-      .feature-grid {
+      .menu-item {
+        text-align: center;
+        font-size: 20px;
+      }
+
+      .main {
+        margin-left: 70px;
+      }
+
+      .content {
+        padding: 25px 15px;
+      }
+
+      .topbar {
+        padding: 0 20px;
+      }
+
+      .stats {
         grid-template-columns: 1fr;
       }
 
-      .builder-panel {
-        padding: 22px;
+      .projects {
+        grid-template-columns: 1fr;
       }
 
-      .colors {
-        flex-direction: column;
+      .domain-box {
+        display: block;
+      }
+
+      .domain-suffix {
+        display: block;
+        padding: 0 14px 14px;
       }
     }
   </style>
@@ -424,164 +448,253 @@
 
 <body>
 
-  <!-- HEADER -->
+  <!-- SIDEBAR -->
 
-  <header>
+  <aside class="sidebar">
 
     <div class="logo">
       VEY<span>RO</span>
     </div>
 
-    <nav>
-      <a href="#">Início</a>
-      <a href="#recursos">Recursos</a>
-      <a href="#criar">Criar streaming</a>
-    </nav>
+    <div class="menu-title">
+      Principal
+    </div>
 
-  </header>
+    <button class="menu-item active">
+      📊 <span>Dashboard</span>
+    </button>
+
+    <button
+      class="menu-item"
+      onclick="showCreate()"
+    >
+      🎬 <span>Meus streamings</span>
+    </button>
+
+    <div class="menu-title">
+      Gerenciar
+    </div>
+
+    <button class="menu-item">
+      🎨 <span>Aparência</span>
+    </button>
+
+    <button class="menu-item">
+      🎞️ <span>Catálogo</span>
+    </button>
+
+    <button class="menu-item">
+      📈 <span>Estatísticas</span>
+    </button>
+
+    <div class="menu-title">
+      Conta
+    </div>
+
+    <button class="menu-item">
+      ⚙️ <span>Configurações</span>
+    </button>
+
+  </aside>
 
 
-  <!-- HERO -->
+  <!-- MAIN -->
 
-  <section class="hero">
+  <main class="main">
 
-    <div class="hero-content">
-
-      <div class="badge">
-        Plataforma para criação de streamings
-      </div>
+    <header class="topbar">
 
       <h1>
-        Crie seu próprio <span>streaming.</span>
+        Dashboard
       </h1>
 
-      <p>
-        Transforme sua ideia em uma plataforma de streaming
-        personalizada sem precisar começar tudo do zero.
-      </p>
-
-      <a href="#criar" class="primary-button">
-        Criar meu streaming
-      </a>
-
-    </div>
-
-  </section>
-
-
-  <!-- RECURSOS -->
-
-  <section class="features" id="recursos">
-
-    <div class="section-title">
-
-      <h2>
-        Tudo para seu streaming
-      </h2>
-
-      <p>
-        Monte sua plataforma do seu jeito.
-      </p>
-
-    </div>
-
-
-    <div class="feature-grid">
-
-      <div class="feature">
-
-        <div class="feature-icon">🎨</div>
-
-        <h3>
-          Personalização
-        </h3>
-
-        <p>
-          Escolha cores, identidade visual,
-          nome e aparência da sua plataforma.
-        </p>
-
+      <div class="profile">
+        V
       </div>
 
-
-      <div class="feature">
-
-        <div class="feature-icon">🎬</div>
-
-        <h3>
-          Catálogo
-        </h3>
-
-        <p>
-          Organize filmes, séries, categorias
-          e outros conteúdos.
-        </p>
-
-      </div>
+    </header>
 
 
-      <div class="feature">
+    <div class="content">
 
-        <div class="feature-icon">🔎</div>
+      <!-- WELCOME -->
 
-        <h3>
-          Pesquisa
-        </h3>
-
-        <p>
-          Permita que seus usuários encontrem
-          seus conteúdos rapidamente.
-        </p>
-
-      </div>
-
-
-      <div class="feature">
-
-        <div class="feature-icon">📱</div>
-
-        <h3>
-          Responsivo
-        </h3>
-
-        <p>
-          Crie uma experiência adaptada para
-          computadores e celulares.
-        </p>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- CRIADOR -->
-
-  <section class="builder" id="criar">
-
-    <div class="builder-container">
-
-      <div class="builder-header">
+      <div class="welcome">
 
         <h2>
-          Crie seu streaming
+          Olá! 👋
         </h2>
 
         <p>
-          Configure as informações básicas da sua plataforma.
+          Gerencie seus projetos de streaming pela Veyro.
         </p>
 
       </div>
 
 
-      <div class="builder-panel">
+      <!-- STATS -->
 
-        <!-- NOME -->
+      <div class="stats">
+
+        <div class="stat">
+
+          <div class="stat-title">
+            Meus streamings
+          </div>
+
+          <div class="stat-value" id="streamCount">
+            1
+          </div>
+
+          <div class="stat-change">
+            +1 este mês
+          </div>
+
+        </div>
+
+
+        <div class="stat">
+
+          <div class="stat-title">
+            Visualizações
+          </div>
+
+          <div class="stat-value">
+            0
+          </div>
+
+          <div class="stat-change">
+            Seu primeiro projeto
+          </div>
+
+        </div>
+
+
+        <div class="stat">
+
+          <div class="stat-title">
+            Conteúdos
+          </div>
+
+          <div class="stat-value">
+            0
+          </div>
+
+          <div class="stat-change">
+            Adicione seu catálogo
+          </div>
+
+        </div>
+
+
+        <div class="stat">
+
+          <div class="stat-title">
+            Status
+          </div>
+
+          <div class="stat-value">
+            Ativo
+          </div>
+
+          <div class="stat-change">
+            Plataforma funcionando
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- PROJECTS -->
+
+      <div class="section-header">
+
+        <h2>
+          Meus streamings
+        </h2>
+
+        <button
+          class="create-button"
+          onclick="showCreate()"
+        >
+          + Criar streaming
+        </button>
+
+      </div>
+
+
+      <div class="projects" id="projects">
+
+        <div class="project">
+
+          <div class="project-banner">
+
+            <h3>
+              Meu Streaming
+            </h3>
+
+          </div>
+
+
+          <div class="project-body">
+
+            <p>
+              Endereço do projeto
+            </p>
+
+            <div class="project-url">
+              meustreaming.veyro.app
+            </div>
+
+            <p>
+              Criado agora
+            </p>
+
+            <div class="project-actions">
+
+              <button
+                class="action-button"
+                onclick="alert('Editor em desenvolvimento.')"
+              >
+                ✏️ Editar
+              </button>
+
+              <button
+                class="action-button"
+                onclick="alert('A prévia será aberta aqui.')"
+              >
+                👁️ Visualizar
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- CREATE -->
+
+      <div
+        class="create-panel"
+        id="createPanel"
+      >
+
+        <h2>
+          Criar novo streaming
+        </h2>
+
+        <p>
+          Escolha o nome e o endereço do seu projeto.
+        </p>
+
 
         <div class="form-group">
 
-          <label for="streamName">
+          <label>
             Nome do streaming
           </label>
 
@@ -594,175 +707,56 @@
         </div>
 
 
-        <!-- DESCRIÇÃO -->
-
-        <div class="form-group">
-
-          <label for="streamDescription">
-            Descrição
-          </label>
-
-          <textarea
-            id="streamDescription"
-            placeholder="Ex: Seu catálogo de filmes e séries."
-          ></textarea>
-
-        </div>
-
-
-        <!-- TIPO -->
-
-        <div class="form-group">
-
-          <label for="streamType">
-            Tipo de conteúdo
-          </label>
-
-          <select id="streamType">
-
-            <option value="Filmes e séries">
-              Filmes e séries
-            </option>
-
-            <option value="Filmes">
-              Filmes
-            </option>
-
-            <option value="Séries">
-              Séries
-            </option>
-
-            <option value="Vídeos">
-              Vídeos
-            </option>
-
-            <option value="Conteúdo próprio">
-              Conteúdo próprio
-            </option>
-
-          </select>
-
-        </div>
-
-
-        <!-- CORES -->
-
         <div class="form-group">
 
           <label>
-            Cores do streaming
+            Subdomínio
           </label>
 
-          <div class="colors">
+          <div class="domain-box">
 
             <input
-              id="primaryColor"
-              type="color"
-              value="#7c5cff"
+              id="subdomain"
+              type="text"
+              placeholder="meustreaming"
+              oninput="updateDomain()"
             >
 
-            <input
-              id="secondaryColor"
-              type="color"
-              value="#111119"
-            >
+            <div class="domain-suffix">
+              .veyro.app
+            </div>
+
+          </div>
+
+
+          <div class="domain-preview">
+
+            Seu streaming ficará disponível em:
+
+            <strong id="domainPreview">
+              seunome.veyro.app
+            </strong>
 
           </div>
 
         </div>
 
 
-        <!-- BOTÃO -->
+        <div class="panel-buttons">
 
-        <button
-          class="generate-button"
-          onclick="generateStreaming()"
-        >
-          Gerar meu streaming
-        </button>
-
-      </div>
-
-
-      <!-- PREVIEW -->
-
-      <div id="preview">
-
-        <div class="preview-title">
-
-          <h2>
-            Prévia do seu streaming
-          </h2>
-
-        </div>
-
-
-        <div class="preview-window">
-
-          <div class="preview-header">
-
-            <div
-              id="previewLogo"
-              class="preview-logo"
-            >
-              Meu Streaming
-            </div>
-
-            <div class="preview-menu">
-              Início &nbsp; Filmes &nbsp; Séries &nbsp; Pesquisa
-            </div>
-
-          </div>
-
-
-          <div
-            id="previewHero"
-            class="preview-hero"
+          <button
+            class="save-button"
+            onclick="createProject()"
           >
+            Criar projeto
+          </button>
 
-            <div>
-
-              <h3 id="previewName">
-                Meu Streaming
-              </h3>
-
-              <p id="previewDescription">
-                Seu catálogo de entretenimento.
-              </p>
-
-            </div>
-
-          </div>
-
-
-          <div class="preview-content">
-
-            <h3 id="previewCategory">
-              Filmes e séries
-            </h3>
-
-
-            <div class="movie-grid">
-
-              <div class="movie">
-                Conteúdo 01
-              </div>
-
-              <div class="movie">
-                Conteúdo 02
-              </div>
-
-              <div class="movie">
-                Conteúdo 03
-              </div>
-
-              <div class="movie">
-                Conteúdo 04
-              </div>
-
-            </div>
-
-          </div>
+          <button
+            class="cancel-button"
+            onclick="hideCreate()"
+          >
+            Cancelar
+          </button>
 
         </div>
 
@@ -770,86 +764,186 @@
 
     </div>
 
-  </section>
+  </main>
 
-
-  <!-- FOOTER -->
-
-  <footer>
-
-    © 2026 Veyro — Crie seu próprio streaming.
-
-  </footer>
-
-
-  <!-- JAVASCRIPT -->
 
   <script>
 
-    function generateStreaming() {
+    function showCreate() {
+
+      const panel =
+        document.getElementById("createPanel");
+
+      panel.style.display = "block";
+
+      panel.scrollIntoView({
+        behavior: "smooth"
+      });
+
+    }
+
+
+    function hideCreate() {
+
+      document.getElementById(
+        "createPanel"
+      ).style.display = "none";
+
+    }
+
+
+    function updateDomain() {
+
+      let subdomain =
+        document.getElementById(
+          "subdomain"
+        ).value;
+
+      subdomain =
+        subdomain
+          .toLowerCase()
+          .replace(/[^a-z0-9-]/g, "");
+
+      document.getElementById(
+        "subdomain"
+      ).value = subdomain;
+
+
+      document.getElementById(
+        "domainPreview"
+      ).textContent =
+        subdomain
+          ? subdomain + ".veyro.app"
+          : "seunome.veyro.app";
+
+    }
+
+
+    function createProject() {
 
       const name =
-        document.getElementById("streamName").value.trim();
+        document.getElementById(
+          "streamName"
+        ).value.trim();
 
-      const description =
-        document.getElementById("streamDescription").value.trim();
-
-      const type =
-        document.getElementById("streamType").value;
-
-      const primaryColor =
-        document.getElementById("primaryColor").value;
-
-      const secondaryColor =
-        document.getElementById("secondaryColor").value;
+      const subdomain =
+        document.getElementById(
+          "subdomain"
+        ).value.trim();
 
 
-      if (name === "") {
+      if (!name) {
 
-        alert("Digite o nome do seu streaming.");
+        alert(
+          "Digite o nome do seu streaming."
+        );
 
         return;
 
       }
 
 
-      const finalDescription =
-        description === ""
-          ? "Seu catálogo de entretenimento."
-          : description;
+      if (!subdomain) {
+
+        alert(
+          "Escolha um subdomínio."
+        );
+
+        return;
+
+      }
 
 
-      document.getElementById("preview").style.display = "block";
+      const projects =
+        document.getElementById(
+          "projects"
+        );
 
 
-      document.getElementById("previewLogo").textContent = name;
+      const project =
+        document.createElement("div");
 
-      document.getElementById("previewName").textContent = name;
-
-      document.getElementById("previewDescription").textContent =
-        finalDescription;
-
-      document.getElementById("previewCategory").textContent =
-        type;
+      project.className =
+        "project";
 
 
-      document.getElementById("previewHero").style.background =
-        "linear-gradient(90deg, " +
-        secondaryColor +
-        ", #09090d)";
+      project.innerHTML = `
+
+        <div class="project-banner">
+
+          <h3>
+            ${escapeHTML(name)}
+          </h3>
+
+        </div>
+
+        <div class="project-body">
+
+          <p>
+            Endereço do projeto
+          </p>
+
+          <div class="project-url">
+            ${escapeHTML(subdomain)}.veyro.app
+          </div>
+
+          <p>
+            Criado agora
+          </p>
+
+          <div class="project-actions">
+
+            <button
+              class="action-button"
+              onclick="alert('Editor em desenvolvimento.')"
+            >
+              ✏️ Editar
+            </button>
+
+            <button
+              class="action-button"
+              onclick="alert('Prévia do streaming em desenvolvimento.')"
+            >
+              👁️ Visualizar
+            </button>
+
+          </div>
+
+        </div>
+
+      `;
 
 
-      document.getElementById("previewName").style.color =
-        primaryColor;
+      projects.appendChild(project);
 
 
-      document.getElementById("previewLogo").style.color =
-        primaryColor;
+      let count =
+        document.getElementById(
+          "streamCount"
+        );
+
+      count.textContent =
+        projects.children.length;
 
 
-      document.getElementById("preview").scrollIntoView({
-        behavior: "smooth"
-      });
+      alert(
+        "Projeto criado! O subdomínio foi reservado na interface."
+      );
+
+
+      hideCreate();
+
+    }
+
+
+    function escapeHTML(text) {
+
+      const div =
+        document.createElement("div");
+
+      div.textContent = text;
+
+      return div.innerHTML;
 
     }
 
