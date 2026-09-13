@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Veyro — Crie seu site</title>
+  <title>Veyro — Crie seu streaming</title>
 
   <style>
     * {
@@ -20,34 +20,46 @@
     }
 
     body {
-      background: #0b0b0f;
+      background: #08080c;
       color: white;
       min-height: 100vh;
     }
 
+    /* HEADER */
+
     header {
+      height: 72px;
+      padding: 0 7%;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 22px 8%;
-      border-bottom: 1px solid #222;
+      justify-content: space-between;
+      border-bottom: 1px solid #202028;
+      background: rgba(8, 8, 12, 0.95);
       position: sticky;
       top: 0;
-      background: rgba(11, 11, 15, 0.95);
-      backdrop-filter: blur(10px);
-      z-index: 10;
+      z-index: 100;
+      backdrop-filter: blur(12px);
     }
 
     .logo {
-      font-size: 28px;
-      font-weight: bold;
-      letter-spacing: 1px;
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .logo span {
+      color: #7c5cff;
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
     }
 
     nav a {
-      color: #aaa;
+      color: #9999a5;
       text-decoration: none;
-      margin-left: 25px;
+      font-size: 14px;
       transition: 0.2s;
     }
 
@@ -55,14 +67,42 @@
       color: white;
     }
 
+    /* HERO */
+
     .hero {
+      min-height: 650px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 120px 20px 100px;
+      padding: 80px 20px;
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(124, 92, 255, 0.18),
+          transparent 50%
+        );
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 15px;
+      border: 1px solid #31275c;
+      background: #151122;
+      border-radius: 30px;
+      color: #a895ff;
+      font-size: 13px;
+      margin-bottom: 25px;
     }
 
     .hero h1 {
-      font-size: 60px;
-      margin-bottom: 20px;
+      font-size: clamp(45px, 7vw, 82px);
+      line-height: 1;
+      margin-bottom: 25px;
     }
 
     .hero h1 span {
@@ -70,150 +110,313 @@
     }
 
     .hero p {
-      color: #aaa;
-      font-size: 20px;
       max-width: 650px;
       margin: auto;
+      color: #9d9da8;
+      font-size: 19px;
       line-height: 1.6;
     }
 
-    .button {
+    .primary-button {
       display: inline-block;
       margin-top: 35px;
-      padding: 16px 30px;
+      padding: 17px 30px;
+      border: 0;
+      border-radius: 10px;
       background: #7c5cff;
       color: white;
       text-decoration: none;
-      border-radius: 10px;
       font-weight: bold;
+      cursor: pointer;
       transition: 0.2s;
     }
 
-    .button:hover {
+    .primary-button:hover {
       transform: translateY(-2px);
       opacity: 0.9;
     }
 
+    /* FEATURES */
+
     .features {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      padding: 30px 8% 100px;
-      flex-wrap: wrap;
+      padding: 80px 7%;
+      background: #0d0d13;
     }
 
-    .card {
-      background: #15151c;
-      border: 1px solid #252530;
-      border-radius: 15px;
-      padding: 30px;
-      width: 280px;
-      transition: 0.2s;
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
     }
 
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: #7c5cff;
-    }
-
-    .card h2 {
+    .section-title h2 {
+      font-size: 38px;
       margin-bottom: 12px;
     }
 
-    .card p {
-      color: #999;
+    .section-title p {
+      color: #888894;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    .feature {
+      background: #14141c;
+      border: 1px solid #252530;
+      border-radius: 15px;
+      padding: 28px;
+      transition: 0.2s;
+    }
+
+    .feature:hover {
+      transform: translateY(-4px);
+      border-color: #7c5cff;
+    }
+
+    .feature-icon {
+      font-size: 30px;
+      margin-bottom: 18px;
+    }
+
+    .feature h3 {
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      color: #8d8d99;
       line-height: 1.5;
+      font-size: 14px;
     }
 
     /* BUILDER */
 
-    #builder {
+    .builder {
       padding: 100px 20px;
+      background: #09090d;
+    }
+
+    .builder-container {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .builder-header {
       text-align: center;
-      background: #111118;
-      border-top: 1px solid #222;
+      margin-bottom: 45px;
     }
 
-    #builder h2 {
-      font-size: 40px;
-      margin-bottom: 15px;
+    .builder-header h2 {
+      font-size: 42px;
+      margin-bottom: 12px;
     }
 
-    #builder > p {
-      color: #999;
-      margin-bottom: 30px;
+    .builder-header p {
+      color: #888894;
     }
 
-    .builder-input {
-      width: 90%;
-      max-width: 600px;
-      padding: 18px;
-      border-radius: 10px;
-      border: 1px solid #333;
-      background: #191922;
+    .builder-panel {
+      background: #12121a;
+      border: 1px solid #292933;
+      border-radius: 18px;
+      padding: 35px;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 9px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 15px;
+      background: #0b0b10;
+      border: 1px solid #30303b;
+      border-radius: 9px;
       color: white;
-      font-size: 16px;
       outline: none;
+      font-size: 15px;
     }
 
-    .builder-input:focus {
+    .form-group textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
       border-color: #7c5cff;
     }
 
-    .create-button {
-      margin-top: 20px;
-      padding: 16px 30px;
-      border: none;
-      border-radius: 10px;
-      background: #7c5cff;
-      color: white;
-      font-weight: bold;
-      font-size: 16px;
+    .colors {
+      display: flex;
+      gap: 15px;
+    }
+
+    .colors input {
+      height: 55px;
+      padding: 5px;
       cursor: pointer;
     }
 
-    .create-button:hover {
+    .generate-button {
+      width: 100%;
+      padding: 17px;
+      border: 0;
+      border-radius: 10px;
+      background: #7c5cff;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .generate-button:hover {
       opacity: 0.9;
     }
 
-    #result {
+    /* PREVIEW */
+
+    #preview {
       display: none;
-      margin: 50px auto 0;
-      max-width: 700px;
-      background: #15151c;
-      border: 1px solid #292936;
+      margin-top: 40px;
+    }
+
+    .preview-title {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .preview-window {
+      overflow: hidden;
+      border: 1px solid #30303b;
       border-radius: 15px;
+      background: #09090d;
+    }
+
+    .preview-header {
+      height: 65px;
+      padding: 0 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #111119;
+    }
+
+    .preview-logo {
+      font-size: 21px;
+      font-weight: bold;
+    }
+
+    .preview-menu {
+      color: #888894;
+      font-size: 13px;
+    }
+
+    .preview-hero {
+      min-height: 260px;
+      padding: 45px 30px;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(0,0,0,0.9),
+          rgba(0,0,0,0.2)
+        );
+    }
+
+    .preview-hero h3 {
+      font-size: 35px;
+      margin-bottom: 10px;
+    }
+
+    .preview-hero p {
+      color: #aaa;
+      max-width: 450px;
+      line-height: 1.5;
+    }
+
+    .preview-content {
       padding: 30px;
     }
 
-    #result h3 {
-      margin-bottom: 15px;
-      font-size: 25px;
+    .preview-content h3 {
+      margin-bottom: 20px;
     }
 
-    #result p {
-      color: #aaa;
-      line-height: 1.6;
+    .movie-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
     }
+
+    .movie {
+      height: 150px;
+      border-radius: 8px;
+      background: #191923;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666674;
+      font-size: 13px;
+    }
+
+    /* FOOTER */
 
     footer {
       text-align: center;
       padding: 40px 20px;
-      border-top: 1px solid #222;
-      color: #777;
+      color: #666673;
+      border-top: 1px solid #202028;
+      font-size: 13px;
     }
 
-    @media (max-width: 700px) {
-      .hero h1 {
-        font-size: 42px;
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      .feature-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .movie-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding: 0 20px;
       }
 
       nav {
         display: none;
       }
 
-      #builder h2 {
-        font-size: 32px;
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .builder-panel {
+        padding: 22px;
+      }
+
+      .colors {
+        flex-direction: column;
       }
     }
   </style>
@@ -221,39 +424,47 @@
 
 <body>
 
-  <!-- CABEÇALHO -->
+  <!-- HEADER -->
 
   <header>
 
     <div class="logo">
-      VEYRO
+      VEY<span>RO</span>
     </div>
 
     <nav>
       <a href="#">Início</a>
       <a href="#recursos">Recursos</a>
-      <a href="#builder">Criar site</a>
+      <a href="#criar">Criar streaming</a>
     </nav>
 
   </header>
 
 
-  <!-- PÁGINA INICIAL -->
+  <!-- HERO -->
 
   <section class="hero">
 
-    <h1>
-      Crie seu <span>site.</span>
-    </h1>
+    <div class="hero-content">
 
-    <p>
-      Transforme suas ideias em sites modernos,
-      rápidos e personalizados sem começar do zero.
-    </p>
+      <div class="badge">
+        Plataforma para criação de streamings
+      </div>
 
-    <a href="#builder" class="button">
-      Começar agora
-    </a>
+      <h1>
+        Crie seu próprio <span>streaming.</span>
+      </h1>
+
+      <p>
+        Transforme sua ideia em uma plataforma de streaming
+        personalizada sem precisar começar tudo do zero.
+      </p>
+
+      <a href="#criar" class="primary-button">
+        Criar meu streaming
+      </a>
+
+    </div>
 
   </section>
 
@@ -262,96 +473,311 @@
 
   <section class="features" id="recursos">
 
-    <div class="card">
+    <div class="section-title">
 
-      <h2>🎨 Personalize</h2>
+      <h2>
+        Tudo para seu streaming
+      </h2>
 
       <p>
-        Escolha cores, textos e estilos para
-        deixar seu site com a sua identidade.
+        Monte sua plataforma do seu jeito.
       </p>
 
     </div>
 
 
-    <div class="card">
+    <div class="feature-grid">
 
-      <h2>⚡ Rápido</h2>
+      <div class="feature">
 
-      <p>
-        Comece seu projeto rapidamente sem
-        precisar construir tudo do zero.
-      </p>
+        <div class="feature-icon">🎨</div>
 
-    </div>
+        <h3>
+          Personalização
+        </h3>
+
+        <p>
+          Escolha cores, identidade visual,
+          nome e aparência da sua plataforma.
+        </p>
+
+      </div>
 
 
-    <div class="card">
+      <div class="feature">
 
-      <h2>🚀 Publique</h2>
+        <div class="feature-icon">🎬</div>
 
-      <p>
-        Transforme sua ideia em uma página
-        que qualquer pessoa poderá acessar.
-      </p>
+        <h3>
+          Catálogo
+        </h3>
+
+        <p>
+          Organize filmes, séries, categorias
+          e outros conteúdos.
+        </p>
+
+      </div>
+
+
+      <div class="feature">
+
+        <div class="feature-icon">🔎</div>
+
+        <h3>
+          Pesquisa
+        </h3>
+
+        <p>
+          Permita que seus usuários encontrem
+          seus conteúdos rapidamente.
+        </p>
+
+      </div>
+
+
+      <div class="feature">
+
+        <div class="feature-icon">📱</div>
+
+        <h3>
+          Responsivo
+        </h3>
+
+        <p>
+          Crie uma experiência adaptada para
+          computadores e celulares.
+        </p>
+
+      </div>
 
     </div>
 
   </section>
 
 
-  <!-- CRIADOR DE SITES -->
+  <!-- CRIADOR -->
 
-  <section id="builder">
+  <section class="builder" id="criar">
 
-    <h2>
-      Comece seu site
-    </h2>
+    <div class="builder-container">
 
-    <p>
-      Diga o que você quer criar.
-    </p>
+      <div class="builder-header">
 
+        <h2>
+          Crie seu streaming
+        </h2>
 
-    <input
-      id="siteDescription"
-      class="builder-input"
-      type="text"
-      placeholder="Ex: Quero criar uma loja de roupas..."
-    >
+        <p>
+          Configure as informações básicas da sua plataforma.
+        </p>
+
+      </div>
 
 
-    <br>
+      <div class="builder-panel">
+
+        <!-- NOME -->
+
+        <div class="form-group">
+
+          <label for="streamName">
+            Nome do streaming
+          </label>
+
+          <input
+            id="streamName"
+            type="text"
+            placeholder="Ex: VeyroFlix"
+          >
+
+        </div>
 
 
-    <button
-      class="create-button"
-      onclick="createSite()"
-    >
-      Criar meu site
-    </button>
+        <!-- DESCRIÇÃO -->
+
+        <div class="form-group">
+
+          <label for="streamDescription">
+            Descrição
+          </label>
+
+          <textarea
+            id="streamDescription"
+            placeholder="Ex: Seu catálogo de filmes e séries."
+          ></textarea>
+
+        </div>
 
 
-    <!-- RESULTADO -->
+        <!-- TIPO -->
 
-    <div id="result">
+        <div class="form-group">
 
-      <h3>
-        Sua ideia foi recebida! 🚀
-      </h3>
+          <label for="streamType">
+            Tipo de conteúdo
+          </label>
 
-      <p id="resultText"></p>
+          <select id="streamType">
+
+            <option value="Filmes e séries">
+              Filmes e séries
+            </option>
+
+            <option value="Filmes">
+              Filmes
+            </option>
+
+            <option value="Séries">
+              Séries
+            </option>
+
+            <option value="Vídeos">
+              Vídeos
+            </option>
+
+            <option value="Conteúdo próprio">
+              Conteúdo próprio
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <!-- CORES -->
+
+        <div class="form-group">
+
+          <label>
+            Cores do streaming
+          </label>
+
+          <div class="colors">
+
+            <input
+              id="primaryColor"
+              type="color"
+              value="#7c5cff"
+            >
+
+            <input
+              id="secondaryColor"
+              type="color"
+              value="#111119"
+            >
+
+          </div>
+
+        </div>
+
+
+        <!-- BOTÃO -->
+
+        <button
+          class="generate-button"
+          onclick="generateStreaming()"
+        >
+          Gerar meu streaming
+        </button>
+
+      </div>
+
+
+      <!-- PREVIEW -->
+
+      <div id="preview">
+
+        <div class="preview-title">
+
+          <h2>
+            Prévia do seu streaming
+          </h2>
+
+        </div>
+
+
+        <div class="preview-window">
+
+          <div class="preview-header">
+
+            <div
+              id="previewLogo"
+              class="preview-logo"
+            >
+              Meu Streaming
+            </div>
+
+            <div class="preview-menu">
+              Início &nbsp; Filmes &nbsp; Séries &nbsp; Pesquisa
+            </div>
+
+          </div>
+
+
+          <div
+            id="previewHero"
+            class="preview-hero"
+          >
+
+            <div>
+
+              <h3 id="previewName">
+                Meu Streaming
+              </h3>
+
+              <p id="previewDescription">
+                Seu catálogo de entretenimento.
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="preview-content">
+
+            <h3 id="previewCategory">
+              Filmes e séries
+            </h3>
+
+
+            <div class="movie-grid">
+
+              <div class="movie">
+                Conteúdo 01
+              </div>
+
+              <div class="movie">
+                Conteúdo 02
+              </div>
+
+              <div class="movie">
+                Conteúdo 03
+              </div>
+
+              <div class="movie">
+                Conteúdo 04
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
 
     </div>
 
   </section>
 
 
-  <!-- RODAPÉ -->
+  <!-- FOOTER -->
 
   <footer>
 
-    © 2026 Veyro — Crie sua ideia.
+    © 2026 Veyro — Crie seu próprio streaming.
 
   </footer>
 
@@ -360,37 +786,70 @@
 
   <script>
 
-    function createSite() {
+    function generateStreaming() {
+
+      const name =
+        document.getElementById("streamName").value.trim();
 
       const description =
-        document.getElementById("siteDescription").value;
+        document.getElementById("streamDescription").value.trim();
 
-      const result =
-        document.getElementById("result");
+      const type =
+        document.getElementById("streamType").value;
 
-      const resultText =
-        document.getElementById("resultText");
+      const primaryColor =
+        document.getElementById("primaryColor").value;
+
+      const secondaryColor =
+        document.getElementById("secondaryColor").value;
 
 
-      if (description.trim() === "") {
+      if (name === "") {
 
-        alert("Digite o que você quer criar.");
+        alert("Digite o nome do seu streaming.");
 
         return;
 
       }
 
 
-      result.style.display = "block";
+      const finalDescription =
+        description === ""
+          ? "Seu catálogo de entretenimento."
+          : description;
 
 
-      resultText.innerHTML =
-        "Você quer criar: <strong>" +
-        description +
-        "</strong><br><br>" +
-        "Essa é a primeira etapa da criação do seu site. " +
-        "Em breve poderemos transformar essa descrição " +
-        "em uma página completa.";
+      document.getElementById("preview").style.display = "block";
+
+
+      document.getElementById("previewLogo").textContent = name;
+
+      document.getElementById("previewName").textContent = name;
+
+      document.getElementById("previewDescription").textContent =
+        finalDescription;
+
+      document.getElementById("previewCategory").textContent =
+        type;
+
+
+      document.getElementById("previewHero").style.background =
+        "linear-gradient(90deg, " +
+        secondaryColor +
+        ", #09090d)";
+
+
+      document.getElementById("previewName").style.color =
+        primaryColor;
+
+
+      document.getElementById("previewLogo").style.color =
+        primaryColor;
+
+
+      document.getElementById("preview").scrollIntoView({
+        behavior: "smooth"
+      });
 
     }
 
